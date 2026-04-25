@@ -1,0 +1,7 @@
+image:
+  repository: shubha20/vkpaints_product-service
+  tag: latest
+  pullPolicy: IfNotPresent
+replicas: 1
+service:
+  port: 80

@@ -1,0 +1,6 @@
+image:
+  repository: shubha20/vkpaints_product-service
+  tag: v1.1.0
+replicas: 3
+env:
+  NODE_ENV: "production"
