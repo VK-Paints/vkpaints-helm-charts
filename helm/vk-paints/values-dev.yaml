@@ -1,6 +1,6 @@
 global:
   namespace: vkpaints-dev-ns
-  gatewayNamespace: istio-system
+  gatewayNamespace: vkpaints-gateway-ns
   storageClassName: standard # Using standard for dev
 
 microservices:

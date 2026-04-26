@@ -1,7 +1,7 @@
 global:
-  namespace: vk-paints-prod
-  gatewayNamespace: istio-system
-  storageClassName: ebs-sc # Production storage class
+  namespace: vkpaints-prod-ns
+  gatewayNamespace: vkpaints-gateway-ns
+  storageClassName: premium-rwo # Using SSD for production storage class
 
 microservices:
   frontend:
