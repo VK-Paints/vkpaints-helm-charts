@@ -1,5 +1,5 @@
 global:
-  namespace: vk-paints-dev
+  namespace: vkpaints-dev-ns
   gatewayNamespace: istio-system
   storageClassName: standard # Using standard for dev
 
