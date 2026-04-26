@@ -1,0 +1,34 @@
+global:
+  namespace: vk-paints-prod
+  gatewayNamespace: istio-system
+  storageClassName: ebs-sc # Production storage class
+
+microservices:
+  frontend:
+    image: ghcr.io/vk-paints/vkpaints-frontend-service:main
+    port: 80
+  user:
+    image: ghcr.io/vk-paints/vkpaints-user-service:main
+    port: 3001
+  product:
+    image: ghcr.io/vk-paints/vkpaints-product-service:main
+    port: 3002
+  quotation:
+    image: ghcr.io/vk-paints/vkpaints-quotation-service:main
+    port: 3003
+  order:
+    image: ghcr.io/vk-paints/vkpaints-order-service:main
+    port: 3004
+    env:
+      RABBITMQ_URL: "amqp://rabbitmq"
+  retailer:
+    image: ghcr.io/vk-paints/vkpaints-retailer-service:main
+    port: 3005
+  notification:
+    image: ghcr.io/vk-paints/vkpaints-notification-service:main
+    port: 3000
+    env:
+      RABBITMQ_URL: "amqp://rabbitmq"
+      SMTP_HOST: "smtp.gmail.com"
+      SMTP_PORT: "465"
+      SMTP_SECURE: "true"
