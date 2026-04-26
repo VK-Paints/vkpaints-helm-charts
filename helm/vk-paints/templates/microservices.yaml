@@ -50,6 +50,18 @@ spec:
         {{- end }}
         ports:
         - containerPort: {{ $service.port }}
+        livenessProbe:
+          httpGet:
+            path: {{ if eq $key "frontend" }}/{{ else }}/health{{ end }}
+            port: {{ $service.port }}
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        readinessProbe:
+          httpGet:
+            path: {{ if eq $key "frontend" }}/{{ else }}/health{{ end }}
+            port: {{ $service.port }}
+          initialDelaySeconds: 5
+          periodSeconds: 10
 ---
 apiVersion: v1
 kind: Service
