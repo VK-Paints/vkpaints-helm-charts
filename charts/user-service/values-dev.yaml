@@ -1,6 +1,6 @@
 image:
   repository: shubha20/vkpaints_user-service
-  tag: latest
+  tag: ""
 replicas: 1
 env:
   NODE_ENV: "development"
