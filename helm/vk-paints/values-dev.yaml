@@ -2,6 +2,11 @@ global:
   namespace: vkpaints-dev-ns
   gatewayNamespace: vkpaints-gateway-ns
   storageClassName: standard # Using standard for dev
+  hpa:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 5
+    targetCPU: 70
 
 microservices:
   frontend:
@@ -10,33 +15,33 @@ microservices:
   user:
     image: ghcr.io/vk-paints/vkpaints-user-service:latest
     port: 3001
-    env:
+    secrets:
       DB_URL: "postgres://postgres:postgres@postgres:5432/user_db"
   product:
     image: ghcr.io/vk-paints/vkpaints-product-service:latest
     port: 3002
-    env:
+    secrets:
       DB_URL: "postgres://postgres:postgres@postgres:5432/product_db"
   quotation:
     image: ghcr.io/vk-paints/vkpaints-quotation-service:latest
     port: 3003
-    env:
+    secrets:
       DB_URL: "postgres://postgres:postgres@postgres:5432/quotation_db"
   order:
     image: ghcr.io/vk-paints/vkpaints-order-service:latest
     port: 3004
-    env:
+    secrets:
       DB_URL: "postgres://postgres:postgres@postgres:5432/order_db"
       RABBITMQ_URL: "amqp://rabbitmq"
   retailer:
     image: ghcr.io/vk-paints/vkpaints-retailer-service:latest
     port: 3005
-    env:
+    secrets:
       DB_URL: "postgres://postgres:postgres@postgres:5432/retailer_db"
   notification:
     image: ghcr.io/vk-paints/vkpaints-notification-service:latest
     port: 3000
-    env:
+    secrets:
       RABBITMQ_URL: "amqp://rabbitmq"
       SMTP_HOST: "smtp.gmail.com"
       SMTP_PORT: "465"

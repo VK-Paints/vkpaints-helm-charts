@@ -2,6 +2,11 @@ global:
   namespace: vkpaints-prod-ns
   gatewayNamespace: vkpaints-gateway-ns
   storageClassName: premium-rwo # Using SSD for production storage class
+  hpa:
+    enabled: true
+    minReplicas: 3
+    maxReplicas: 10
+    targetCPU: 60
 
 microservices:
   frontend:
@@ -10,24 +15,33 @@ microservices:
   user:
     image: ghcr.io/vk-paints/vkpaints-user-service:main
     port: 3001
+    secrets:
+      DB_URL: "postgres://postgres:postgres@postgres:5432/user_db"
   product:
     image: ghcr.io/vk-paints/vkpaints-product-service:main
     port: 3002
+    secrets:
+      DB_URL: "postgres://postgres:postgres@postgres:5432/product_db"
   quotation:
     image: ghcr.io/vk-paints/vkpaints-quotation-service:main
     port: 3003
+    secrets:
+      DB_URL: "postgres://postgres:postgres@postgres:5432/quotation_db"
   order:
     image: ghcr.io/vk-paints/vkpaints-order-service:main
     port: 3004
-    env:
+    secrets:
+      DB_URL: "postgres://postgres:postgres@postgres:5432/order_db"
       RABBITMQ_URL: "amqp://rabbitmq"
   retailer:
     image: ghcr.io/vk-paints/vkpaints-retailer-service:main
     port: 3005
+    secrets:
+      DB_URL: "postgres://postgres:postgres@postgres:5432/retailer_db"
   notification:
     image: ghcr.io/vk-paints/vkpaints-notification-service:main
     port: 3000
-    env:
+    secrets:
       RABBITMQ_URL: "amqp://rabbitmq"
       SMTP_HOST: "smtp.gmail.com"
       SMTP_PORT: "465"
