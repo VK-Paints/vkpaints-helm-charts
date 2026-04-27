@@ -1,24 +1,21 @@
 image:
   repository: ghcr.io/vk-paints/vkpaints-product
-  tag: latest
+  tag: 1b058429e754cd111b288d09b975130a708a754f
 imagePullSecrets:
   - name: regcred
 replicas: 2
 env:
   NODE_ENV: "development"
-
 httproute:
   namespace: vkpaints-dev-ns
   hostname: dev.vkcolors.shop
-
 affinity:
   podAntiAffinity:
     requiredDuringSchedulingIgnoredDuringExecution:
-    - labelSelector:
-        matchLabels:
-          app: product-service
-      topologyKey: "kubernetes.io/hostname"
-
+      - labelSelector:
+          matchLabels:
+            app: product-service
+        topologyKey: "kubernetes.io/hostname"
 resources:
   limits:
     cpu: 500m
@@ -26,14 +23,12 @@ resources:
   requests:
     cpu: 100m
     memory: 128Mi
-
 livenessProbe:
   httpGet:
     path: /health
     port: 3000
   initialDelaySeconds: 15
   periodSeconds: 20
-
 readinessProbe:
   httpGet:
     path: /health
