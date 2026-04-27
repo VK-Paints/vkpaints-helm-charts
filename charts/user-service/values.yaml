@@ -7,8 +7,6 @@ service:
   port: 80
 
 httproute:
-  namespace: vkpaints-dev-ns
   gatewayName: vk-paints-gateway
   gatewayNamespace: vkpaints-gateway-ns
-  hostname: dev.vkpaints.com
   path: /api/users

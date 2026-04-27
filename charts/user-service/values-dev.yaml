@@ -4,3 +4,7 @@ image:
 replicas: 1
 env:
   NODE_ENV: "development"
+
+httproute:
+  namespace: vkpaints-dev-ns
+  hostname: dev.vkcolors.shop
