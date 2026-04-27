@@ -11,45 +11,6 @@ nfs:
   server: 15.206.155.254
   share: /var/nfs/vkpaints
 
-microservices:
-  frontend:
-    image: ghcr.io/vk-paints/vkpaints-frontend:latest
-    port: 8080
-  user:
-    image: ghcr.io/vk-paints/vkpaints-user-service:latest
-    port: 3001
-    secrets:
-      DB_URL: "postgres://postgres:postgres@postgres:5432/user_db"
-  product:
-    image: ghcr.io/vk-paints/vkpaints-product-service:latest
-    port: 3002
-    secrets:
-      DB_URL: "postgres://postgres:postgres@postgres:5432/product_db"
-  quotation:
-    image: ghcr.io/vk-paints/vkpaints-quotation-service:latest
-    port: 3003
-    secrets:
-      DB_URL: "postgres://postgres:postgres@postgres:5432/quotation_db"
-  order:
-    image: ghcr.io/vk-paints/vkpaints-order-service:latest
-    port: 3004
-    secrets:
-      DB_URL: "postgres://postgres:postgres@postgres:5432/order_db"
-      RABBITMQ_URL: "amqp://rabbitmq"
-  retailer:
-    image: ghcr.io/vk-paints/vkpaints-retailer-service:latest
-    port: 3005
-    secrets:
-      DB_URL: "postgres://postgres:postgres@postgres:5432/retailer_db"
-  notification:
-    image: ghcr.io/vk-paints/vkpaints-notification-service:latest
-    port: 3000
-    secrets:
-      RABBITMQ_URL: "amqp://rabbitmq"
-      SMTP_HOST: "smtp.gmail.com"
-      SMTP_PORT: "465"
-      SMTP_SECURE: "true"
-
 gateway:
   service:
     type: NodePort
