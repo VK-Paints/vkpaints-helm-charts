@@ -49,3 +49,7 @@ microservices:
       SMTP_HOST: "smtp.gmail.com"
       SMTP_PORT: "465"
       SMTP_SECURE: "true"
+
+argocd:
+  enabled: true
+  hostname: argocd.vkcolors.shop

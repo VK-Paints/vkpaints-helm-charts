@@ -15,3 +15,7 @@ gateway:
   service:
     type: NodePort
     nodePort: 30080
+
+argocd:
+  enabled: true
+  hostname: argocd-dev.vkcolors.shop
