@@ -13,12 +13,12 @@ httproute:
 affinity:
   podAntiAffinity:
     preferredDuringSchedulingIgnoredDuringExecution:
-    - weight: 100
-      podAffinityTerm:
-        labelSelector:
-          matchLabels:
-            app: frontend
-        topologyKey: "kubernetes.io/hostname"
+      - weight: 100
+        podAffinityTerm:
+          labelSelector:
+            matchLabels:
+              app: frontend
+          topologyKey: "kubernetes.io/hostname"
 resources:
   limits:
     cpu: 500m
