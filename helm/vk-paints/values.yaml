@@ -75,6 +75,8 @@ microservices:
 
 argocd:
   enabled: true
+  crds:
+    install: false
   server:
     insecure: true
 
