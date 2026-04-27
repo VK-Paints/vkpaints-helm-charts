@@ -1,6 +1,6 @@
 image:
   repository: ghcr.io/vk-paints/vkpaints-product-service
-  tag: 1b058429e754cd111b288d09b975130a708a754f
+  tag: latest
 imagePullSecrets:
   - name: regcred
 replicas: 2

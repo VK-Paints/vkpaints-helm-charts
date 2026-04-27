@@ -1,6 +1,6 @@
 image:
   repository: ghcr.io/vk-paints/vkpaints-quotation-service
-  tag: bff70caa57906d28ea465cd91eeba65fa0844865
+  tag: latest
 imagePullSecrets:
   - name: regcred
 replicas: 2

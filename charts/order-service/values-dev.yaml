@@ -1,6 +1,6 @@
 image:
   repository: ghcr.io/vk-paints/vkpaints-order-service
-  tag: 8ad78fc3a0ec7632ca59f8c45602bafb2d3dfbb5
+  tag: latest
 imagePullSecrets:
   - name: regcred
 replicas: 2
