@@ -54,6 +54,7 @@ spec:
         {{- end }}
         ports:
         - containerPort: {{ $service.port }}
+        {{- if ne $key "notification" }}
         livenessProbe:
           httpGet:
             path: {{ if eq $key "frontend" }}/{{ else }}/health{{ end }}
@@ -66,6 +67,7 @@ spec:
             port: {{ $service.port }}
           initialDelaySeconds: 5
           periodSeconds: 10
+        {{- end }}
 ---
 apiVersion: v1
 kind: Service
