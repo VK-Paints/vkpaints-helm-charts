@@ -1,7 +1,7 @@
 global:
   namespace: vkpaints-prod-ns
   gatewayNamespace: vkpaints-gateway-ns
-  storageClassName: premium-rwo # Using SSD for production storage class
+  storageClassName: vkpaints-nfs-sc # Using custom NFS storage class
   hpa:
     enabled: true
     minReplicas: 3

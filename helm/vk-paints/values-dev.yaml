@@ -1,7 +1,7 @@
 global:
   namespace: vkpaints-dev-ns
   gatewayNamespace: vkpaints-gateway-ns
-  storageClassName: standard # Using standard for dev
+  storageClassName: vkpaints-nfs-sc # Using custom NFS storage class
   hpa:
     enabled: true
     minReplicas: 2
