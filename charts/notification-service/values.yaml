@@ -29,3 +29,12 @@ livenessProbe:
 readinessProbe:
   enabled: false
 
+
+startupProbe:
+  enabled: false
+  httpGet:
+    path: /health
+    port: 80
+  failureThreshold: 30
+  periodSeconds: 10
+initContainers: []

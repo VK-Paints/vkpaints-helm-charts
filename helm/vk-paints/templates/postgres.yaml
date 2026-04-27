@@ -3,6 +3,8 @@ kind: Secret
 metadata:
   name: postgres-secret
   namespace: {{ .Values.global.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
 type: Opaque
 stringData:
   POSTGRES_USER: {{ .Values.postgres.user | quote }}
@@ -25,6 +27,8 @@ kind: StatefulSet
 metadata:
   name: postgres
   namespace: {{ .Values.global.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   serviceName: "postgres"
   replicas: 1

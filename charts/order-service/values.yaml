@@ -31,6 +31,7 @@ resources:
     memory: 128Mi
 
 livenessProbe:
+  enabled: true
   httpGet:
     path: /health
     port: 3004
@@ -40,6 +41,7 @@ livenessProbe:
   failureThreshold: 3
 
 readinessProbe:
+  enabled: true
   httpGet:
     path: /health
     port: 3004
@@ -47,3 +49,12 @@ readinessProbe:
   periodSeconds: 10
   timeoutSeconds: 5
   failureThreshold: 3
+
+startupProbe:
+  enabled: true
+  httpGet:
+    path: /health
+    port: 80
+  failureThreshold: 30
+  periodSeconds: 10
+initContainers: []

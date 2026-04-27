@@ -12,6 +12,10 @@ spec:
       labels:
         app: {{ .Chart.Name }}
     spec:
+      {{- if .Values.initContainers }}
+      initContainers:
+        {{- toYaml .Values.initContainers | nindent 8 }}
+      {{- end }}
       affinity:
         {{- toYaml .Values.affinity | nindent 8 }}
       containers:
@@ -27,7 +31,15 @@ spec:
         - containerPort: {{ .Values.service.targetPort | default 3000 }}
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
+        {{- if .Values.startupProbe.enabled }}
+        startupProbe:
+          {{- toYaml (omit .Values.startupProbe "enabled") | nindent 10 }}
+        {{- end }}
+        {{- if .Values.livenessProbe.enabled }}
         livenessProbe:
-          {{- toYaml .Values.livenessProbe | nindent 10 }}
+          {{- toYaml (omit .Values.livenessProbe "enabled") | nindent 10 }}
+        {{- end }}
+        {{- if .Values.readinessProbe.enabled }}
         readinessProbe:
-          {{- toYaml .Values.readinessProbe | nindent 10 }}
+          {{- toYaml (omit .Values.readinessProbe "enabled") | nindent 10 }}
+        {{- end }}
