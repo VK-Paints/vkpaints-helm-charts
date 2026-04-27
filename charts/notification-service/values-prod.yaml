@@ -22,6 +22,7 @@ resources:
     memory: 128Mi
 
 livenessProbe:
+  enabled: false
   httpGet:
     path: /health
     port: 3000
@@ -29,8 +30,10 @@ livenessProbe:
   periodSeconds: 20
 
 readinessProbe:
+  enabled: false
   httpGet:
     path: /health
     port: 3000
   initialDelaySeconds: 5
   periodSeconds: 10
+

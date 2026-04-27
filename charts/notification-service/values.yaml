@@ -24,5 +24,8 @@ resources:
     cpu: 100m
     memory: 128Mi
 
-livenessProbe: {}
-readinessProbe: {}
+livenessProbe:
+  enabled: false
+readinessProbe:
+  enabled: false
+

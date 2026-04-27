@@ -27,11 +27,11 @@ spec:
         - containerPort: {{ .Values.service.targetPort | default 3000 }}
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
-        {{- if not (empty .Values.livenessProbe) }}
+        {{- if .Values.livenessProbe.enabled }}
         livenessProbe:
-          {{- toYaml .Values.livenessProbe | nindent 10 }}
+          {{- toYaml (omit .Values.livenessProbe "enabled") | nindent 10 }}
         {{- end }}
-        {{- if not (empty .Values.readinessProbe) }}
+        {{- if .Values.readinessProbe.enabled }}
         readinessProbe:
-          {{- toYaml .Values.readinessProbe | nindent 10 }}
+          {{- toYaml (omit .Values.readinessProbe "enabled") | nindent 10 }}
         {{- end }}
