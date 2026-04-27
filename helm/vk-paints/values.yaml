@@ -26,12 +26,3 @@ gateway:
   service:
     type: NodePort
     nodePort: 30080
-
-argocd:
-  enabled: true
-  server:
-    insecure: true
-    ingress:
-      enabled: false
-  global:
-    namespaceOverride: argocd
