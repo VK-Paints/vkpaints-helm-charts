@@ -1,4 +1,3 @@
-{{- if .Values.argocd.enabled }}
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
@@ -21,4 +20,3 @@ spec:
         - name: argocd-server
           namespace: argocd
           port: 80
-{{- end }}
