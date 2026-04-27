@@ -2,6 +2,8 @@ image:
   repository: ghcr.io/vk-paints/vkpaints-frontend-service
   tag: latest
   pullPolicy: IfNotPresent
+imagePullSecrets:
+  - name: regcred
 replicas: 2
 service:
   port: 80
