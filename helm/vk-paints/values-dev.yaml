@@ -10,7 +10,7 @@ global:
 
 microservices:
   frontend:
-    image: ghcr.io/vk-paints/vkpaints-frontend-service:latest
+    image: ghcr.io/vk-paints/vkpaints-frontend:latest
     port: 8080
   user:
     image: ghcr.io/vk-paints/vkpaints-user-service:latest
