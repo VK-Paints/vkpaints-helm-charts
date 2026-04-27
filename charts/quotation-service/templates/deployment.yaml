@@ -21,6 +21,8 @@ spec:
         envFrom:
         - configMapRef:
             name: {{ .Chart.Name }}-config
+        - secretRef:
+            name: {{ .Chart.Name }}-secret
         ports:
         - containerPort: {{ .Values.service.targetPort | default 3000 }}
         resources:

@@ -1,6 +1,10 @@
 image:
   repository: ghcr.io/vk-paints/vkpaints-order-service
   tag: latest
+db:
+  url: "postgres://postgres:postgres@postgres:5432/order_db"
+rabbitmq:
+  url: "amqp://guest:guest@rabbitmq:5672"
 replicas: 2
 env:
   NODE_ENV: "development"
