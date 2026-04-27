@@ -73,13 +73,6 @@ microservices:
       SMTP_USER: "shubhahima2003@gmail.com"
       SMTP_PASS: "iuyzfdcihcxrjlfk"
 
-argocd:
-  enabled: true
-  crds:
-    install: false
-  server:
-    insecure: true
-
 gateway:
   service:
     type: NodePort

@@ -47,9 +47,7 @@ microservices:
       SMTP_PORT: "465"
       SMTP_SECURE: "true"
 
-argocd:
-  enabled: true
-  crds:
-    install: false
-  server:
-    insecure: true
+gateway:
+  service:
+    type: NodePort
+    nodePort: 30080
