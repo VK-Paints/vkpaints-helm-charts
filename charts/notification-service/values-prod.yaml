@@ -22,7 +22,7 @@ resources:
     memory: 128Mi
 
 livenessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /health
     port: 3000
@@ -30,7 +30,7 @@ livenessProbe:
   periodSeconds: 20
 
 readinessProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /health
     port: 3000
@@ -39,7 +39,7 @@ readinessProbe:
 
 
 startupProbe:
-  enabled: false
+  enabled: true
   httpGet:
     path: /health
     port: 3000
@@ -49,3 +49,5 @@ initContainers:
   - name: wait-for-rabbitmq
     image: busybox:1.28
     command: ['sh', '-c', 'until nc -zv rabbitmq.vkpaints-prod-ns.svc.cluster.local 5672; do echo waiting for rabbitmq; sleep 2; done;']
+
+
