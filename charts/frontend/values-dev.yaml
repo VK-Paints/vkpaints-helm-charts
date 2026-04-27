@@ -1,5 +1,5 @@
 image:
-  repository: shubha20/vkpaints_frontend
+  repository: ghcr.io/vk-paints/vkpaints-frontend-service
   tag: latest
 replicas: 2
 env:

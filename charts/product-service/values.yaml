@@ -1,5 +1,5 @@
 image:
-  repository: shubha20/vkpaints_product-service
+  repository: ghcr.io/vk-paints/vkpaints-product-service
   tag: latest
   pullPolicy: IfNotPresent
 replicas: 2

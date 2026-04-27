@@ -1,5 +1,5 @@
 image:
-  repository: shubha20/vkpaints_quotation-service
+  repository: ghcr.io/vk-paints/vkpaints-quotation-service
   tag: latest
   pullPolicy: IfNotPresent
 replicas: 2
