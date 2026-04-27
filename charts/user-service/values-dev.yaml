@@ -1,6 +1,8 @@
 image:
-  repository: ghcr.io/vk-paints/vkpaints-user-service
+  repository: ghcr.io/vk-paints/vkpaints-user
   tag: latest
+imagePullSecrets:
+  - name: regcred
 replicas: 2
 env:
   NODE_ENV: "development"

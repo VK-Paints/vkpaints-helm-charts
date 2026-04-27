@@ -1,6 +1,8 @@
 image:
-  repository: ghcr.io/vk-paints/vkpaints-notification-service
-  tag: ""
+  repository: ghcr.io/vk-paints/vkpaints-notification
+  tag: latest
+imagePullSecrets:
+  - name: regcred
 replicas: 2
 env:
   NODE_ENV: "development"
