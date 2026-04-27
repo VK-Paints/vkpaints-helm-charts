@@ -26,7 +26,6 @@ livenessProbe:
   enabled: false
 readinessProbe:
   enabled: false
-<<<<<<< HEAD
 
 
 startupProbe:
@@ -41,5 +40,3 @@ initContainers:
   - name: wait-for-rabbitmq
     image: busybox:1.28
     command: ['sh', '-c', 'until nc -zv rabbitmq.vkpaints-dev-ns.svc.cluster.local 5672; do echo waiting for rabbitmq; sleep 2; done;']
-=======
->>>>>>> cdbca6ab3b44f808624a8accda84bac174693142
