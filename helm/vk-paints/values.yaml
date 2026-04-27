@@ -72,3 +72,8 @@ microservices:
     secrets:
       SMTP_USER: "shubhahima2003@gmail.com"
       SMTP_PASS: "iuyzfdcihcxrjlfk"
+
+argocd:
+  enabled: true
+  server:
+    insecure: true
