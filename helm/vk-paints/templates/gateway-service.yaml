@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: vkpaints-gateway-svc
+  namespace: {{ .Values.global.gatewayNamespace | default "vkpaints-gateway-ns" }}
+spec:
+  type: {{ .Values.gateway.service.type | default "NodePort" }}
+  ports:
+    - name: http
+      port: 80
+      # Depending on kgateway, the target port is often 8080. If it's 80, this can be 80.
+      targetPort: 8080
+      {{- if and (eq (.Values.gateway.service.type | default "NodePort") "NodePort") .Values.gateway.service.nodePort }}
+      nodePort: {{ .Values.gateway.service.nodePort }}
+      {{- end }}
+  selector:
+    # Common kgateway label to select the generated proxy pods
+    gateway.networking.k8s.io/gateway-name: vk-paints-gateway

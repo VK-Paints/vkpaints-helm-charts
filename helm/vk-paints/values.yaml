@@ -77,3 +77,8 @@ argocd:
   enabled: true
   server:
     insecure: true
+
+gateway:
+  service:
+    type: NodePort
+    nodePort: 30080
