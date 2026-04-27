@@ -9,8 +9,10 @@ httproute:
   hostname: dev.vkcolors.shop
 affinity:
   podAntiAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-      - labelSelector:
+    preferredDuringSchedulingIgnoredDuringExecution:
+    - weight: 100
+      podAffinityTerm:
+        labelSelector:
           matchLabels:
             app: product-service
         topologyKey: "kubernetes.io/hostname"
