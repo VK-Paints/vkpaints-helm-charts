@@ -2,6 +2,8 @@ global:
   namespace: vkpaints-dev-ns
   gatewayNamespace: vkpaints-gateway-ns
   storageClassName: vkpaints-nfs-sc
+  imagePullSecrets:
+    - name: regcred
 
 # NFS CSI Settings
 nfs:
