@@ -1,9 +1,39 @@
 image:
   repository: shubha20/vkpaints_frontend
   tag: latest
-replicas: 1
+replicas: 2
 env:
   NODE_ENV: "development"
 httproute:
   namespace: vkpaints-dev-ns
   hostname: dev.vkcolors.shop
+
+affinity:
+  podAntiAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+    - labelSelector:
+        matchLabels:
+          app: frontend
+      topologyKey: "kubernetes.io/hostname"
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+livenessProbe:
+  httpGet:
+    path: /
+    port: 8080
+  initialDelaySeconds: 15
+  periodSeconds: 20
+
+readinessProbe:
+  httpGet:
+    path: /
+    port: 8080
+  initialDelaySeconds: 5
+  periodSeconds: 10

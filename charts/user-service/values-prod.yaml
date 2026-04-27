@@ -1,9 +1,39 @@
 image:
   repository: shubha20/vkpaints_user-service
   tag: v1.1.0
-replicas: 3
+replicas: 2
 env:
   NODE_ENV: "production"
 httproute:
   namespace: vkpaints-prod-ns
   hostname: vkcolors.shop
+
+affinity:
+  podAntiAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+    - labelSelector:
+        matchLabels:
+          app: user-service
+      topologyKey: "kubernetes.io/hostname"
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+livenessProbe:
+  httpGet:
+    path: /health
+    port: 3000
+  initialDelaySeconds: 15
+  periodSeconds: 20
+
+readinessProbe:
+  httpGet:
+    path: /health
+    port: 3000
+  initialDelaySeconds: 5
+  periodSeconds: 10

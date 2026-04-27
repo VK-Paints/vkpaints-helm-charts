@@ -2,7 +2,7 @@ image:
   repository: shubha20/vkpaints_user-service
   tag: latest
   pullPolicy: IfNotPresent
-replicas: 1
+replicas: 2
 service:
   port: 80
 
@@ -10,3 +10,33 @@ httproute:
   gatewayName: vk-paints-gateway
   gatewayNamespace: vkpaints-gateway-ns
   path: /api/users
+
+affinity:
+  podAntiAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+    - labelSelector:
+        matchLabels:
+          app: user-service
+      topologyKey: "kubernetes.io/hostname"
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+livenessProbe:
+  httpGet:
+    path: /health
+    port: 3000
+  initialDelaySeconds: 15
+  periodSeconds: 20
+
+readinessProbe:
+  httpGet:
+    path: /health
+    port: 3000
+  initialDelaySeconds: 5
+  periodSeconds: 10
