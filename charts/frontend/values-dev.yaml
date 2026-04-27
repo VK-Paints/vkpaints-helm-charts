@@ -2,6 +2,9 @@ image:
   repository: ghcr.io/vk-paints/vkpaints-frontend
   tag: latest
 replicas: 2
+service:
+  port: 80
+  targetPort: 8080
 env:
   NODE_ENV: "development"
 httproute:
@@ -26,12 +29,12 @@ resources:
 livenessProbe:
   httpGet:
     path: /
-    port: 80
+    port: 8080
   initialDelaySeconds: 15
   periodSeconds: 20
 readinessProbe:
   httpGet:
     path: /
-    port: 80
+    port: 8080
   initialDelaySeconds: 5
   periodSeconds: 10

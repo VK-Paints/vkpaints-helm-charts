@@ -24,7 +24,5 @@ resources:
     cpu: 100m
     memory: 128Mi
 
-# notification-service is a pure RabbitMQ worker — no HTTP server.
-# Probes are disabled; Kubernetes restart policy handles crashes.
 livenessProbe: {}
 readinessProbe: {}

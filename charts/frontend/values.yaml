@@ -5,6 +5,7 @@ image:
 replicas: 2
 service:
   port: 80
+  targetPort: 8080
 
 httproute:
   gatewayName: vk-paints-gateway
@@ -32,7 +33,7 @@ resources:
 livenessProbe:
   httpGet:
     path: /
-    port: 80
+    port: 8080
   initialDelaySeconds: 60
   periodSeconds: 20
   timeoutSeconds: 5
@@ -41,7 +42,7 @@ livenessProbe:
 readinessProbe:
   httpGet:
     path: /
-    port: 80
+    port: 8080
   initialDelaySeconds: 30
   periodSeconds: 10
   timeoutSeconds: 5
