@@ -8,7 +8,7 @@ global:
     maxReplicas: 5
     targetCPU: 70
 nfs:
-  server: 13.200.254.204
+  server: 15.206.155.254
   share: /var/nfs/vkpaints
 
 microservices:
