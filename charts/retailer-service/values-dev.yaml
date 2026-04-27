@@ -1,6 +1,8 @@
 image:
   repository: ghcr.io/vk-paints/vkpaints-retailer-service
   tag: latest
+service:
+  targetPort: 3005
 db:
   url: "postgres://postgres:postgres@postgres:5432/retailer_db"
 replicas: 2
@@ -32,6 +34,6 @@ livenessProbe:
 readinessProbe:
   httpGet:
     path: /health
-    port: 3000
+    port: 3005
   initialDelaySeconds: 5
   periodSeconds: 10

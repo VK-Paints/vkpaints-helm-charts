@@ -3,6 +3,8 @@ image:
   tag: latest
 db:
   url: "postgres://postgres:postgres@postgres.vkpaints-dev-ns.svc.cluster.local:5432/user_db"
+service:
+  targetPort: 3001
 replicas: 2
 env:
   NODE_ENV: "development"

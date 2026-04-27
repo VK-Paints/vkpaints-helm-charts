@@ -5,6 +5,7 @@ image:
 replicas: 2
 service:
   port: 80
+  targetPort: 3005
 
 httproute:
   gatewayName: vk-paints-gateway

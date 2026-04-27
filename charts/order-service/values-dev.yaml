@@ -1,6 +1,8 @@
 image:
   repository: ghcr.io/vk-paints/vkpaints-order-service
   tag: latest
+service:
+  targetPort: 3004
 db:
   url: "postgres://postgres:postgres@postgres:5432/order_db"
 rabbitmq:
@@ -34,6 +36,6 @@ livenessProbe:
 readinessProbe:
   httpGet:
     path: /health
-    port: 3000
+    port: 3004
   initialDelaySeconds: 5
   periodSeconds: 10
