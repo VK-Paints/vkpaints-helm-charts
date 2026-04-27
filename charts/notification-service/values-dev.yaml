@@ -9,12 +9,12 @@ env:
 affinity:
   podAntiAffinity:
     preferredDuringSchedulingIgnoredDuringExecution:
-    - weight: 100
-      podAffinityTerm:
-        labelSelector:
-          matchLabels:
-            app: notification-service
-        topologyKey: "kubernetes.io/hostname"
+      - weight: 100
+        podAffinityTerm:
+          labelSelector:
+            matchLabels:
+              app: notification-service
+          topologyKey: "kubernetes.io/hostname"
 resources:
   limits:
     cpu: 500m
@@ -26,4 +26,3 @@ livenessProbe:
   enabled: false
 readinessProbe:
   enabled: false
-
