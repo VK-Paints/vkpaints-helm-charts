@@ -8,8 +8,10 @@ env:
   NODE_ENV: "development"
 affinity:
   podAntiAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-      - labelSelector:
+    preferredDuringSchedulingIgnoredDuringExecution:
+    - weight: 100
+      podAffinityTerm:
+        labelSelector:
           matchLabels:
             app: notification-service
         topologyKey: "kubernetes.io/hostname"
@@ -20,15 +22,5 @@ resources:
   requests:
     cpu: 100m
     memory: 128Mi
-livenessProbe:
-  httpGet:
-    path: /health
-    port: 3000
-  initialDelaySeconds: 15
-  periodSeconds: 20
-readinessProbe:
-  httpGet:
-    path: /health
-    port: 3000
-  initialDelaySeconds: 5
-  periodSeconds: 10
+livenessProbe: {}
+readinessProbe: {}

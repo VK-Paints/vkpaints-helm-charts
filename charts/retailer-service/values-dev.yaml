@@ -13,7 +13,7 @@ httproute:
   hostname: dev.vkcolors.shop
 affinity:
   podAntiAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
+    preferredDuringSchedulingIgnoredDuringExecution:
       - labelSelector:
           matchLabels:
             app: retailer-service
@@ -37,3 +37,4 @@ readinessProbe:
     port: 3005
   initialDelaySeconds: 5
   periodSeconds: 10
+
