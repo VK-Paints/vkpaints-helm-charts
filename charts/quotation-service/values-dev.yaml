@@ -1,6 +1,6 @@
 image:
   repository: ghcr.io/vk-paints/vkpaints-quotation
-  tag: latest
+  tag: bff70caa57906d28ea465cd91eeba65fa0844865
 imagePullSecrets:
   - name: regcred
 replicas: 2
@@ -9,15 +9,13 @@ env:
 httproute:
   namespace: vkpaints-dev-ns
   hostname: dev.vkcolors.shop
-
 affinity:
   podAntiAffinity:
     requiredDuringSchedulingIgnoredDuringExecution:
-    - labelSelector:
-        matchLabels:
-          app: quotation-service
-      topologyKey: "kubernetes.io/hostname"
-
+      - labelSelector:
+          matchLabels:
+            app: quotation-service
+        topologyKey: "kubernetes.io/hostname"
 resources:
   limits:
     cpu: 500m
@@ -25,14 +23,12 @@ resources:
   requests:
     cpu: 100m
     memory: 128Mi
-
 livenessProbe:
   httpGet:
     path: /health
     port: 3000
   initialDelaySeconds: 15
   periodSeconds: 20
-
 readinessProbe:
   httpGet:
     path: /health
