@@ -7,10 +7,13 @@ global:
     minReplicas: 3
     maxReplicas: 10
     targetCPU: 60
+nfs:
+  server: 43.204.46.233
+  share: /var/nfs/vkpaints
 
 microservices:
   frontend:
-    image: ghcr.io/vk-paints/vkpaints-frontend-service:main
+    image: ghcr.io/vk-paints/vkpaints-frontend:main
     port: 8080
   user:
     image: ghcr.io/vk-paints/vkpaints-user-service:main
