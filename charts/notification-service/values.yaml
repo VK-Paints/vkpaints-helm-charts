@@ -22,24 +22,7 @@ resources:
     cpu: 100m
     memory: 128Mi
 
-livenessProbe:
-  exec:
-    command:
-    - sh
-    - -c
-    - "ps aux | grep 'node' | grep -v grep"
-  initialDelaySeconds: 30
-  periodSeconds: 20
-  timeoutSeconds: 5
-  failureThreshold: 3
-
-readinessProbe:
-  exec:
-    command:
-    - sh
-    - -c
-    - "ps aux | grep 'node' | grep -v grep"
-  initialDelaySeconds: 15
-  periodSeconds: 10
-  timeoutSeconds: 5
-  failureThreshold: 3
+# notification-service is a pure RabbitMQ worker — no HTTP server.
+# Probes are disabled; Kubernetes restart policy handles crashes.
+livenessProbe: {}
+readinessProbe: {}
