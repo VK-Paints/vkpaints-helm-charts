@@ -1,5 +1,5 @@
 image:
-  repository: ghcr.io/vk-paints/vkpaints-notification
+  repository: ghcr.io/vk-paints/vkpaints-notification-service
   tag: 02074f2727038849975a04d6179e7ad62174dbbc
 imagePullSecrets:
   - name: regcred

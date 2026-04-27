@@ -1,5 +1,5 @@
 image:
-  repository: ghcr.io/vk-paints/vkpaints-product
+  repository: ghcr.io/vk-paints/vkpaints-product-service
   tag: 1b058429e754cd111b288d09b975130a708a754f
 imagePullSecrets:
   - name: regcred
