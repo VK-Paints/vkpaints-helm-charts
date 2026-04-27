@@ -39,4 +39,3 @@ readinessProbe:
     port: 3004
   initialDelaySeconds: 5
   periodSeconds: 10
-
