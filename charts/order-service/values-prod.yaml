@@ -25,15 +25,32 @@ resources:
     memory: 128Mi
 
 livenessProbe:
+  enabled: true
   httpGet:
     path: /health
-    port: 3000
+    port: 3004
   initialDelaySeconds: 15
   periodSeconds: 20
 
 readinessProbe:
+  enabled: true
   httpGet:
     path: /health
-    port: 3000
+    port: 3004
   initialDelaySeconds: 5
   periodSeconds: 10
+
+startupProbe:
+  enabled: true
+  httpGet:
+    path: /health
+    port: 3004
+  failureThreshold: 30
+  periodSeconds: 10
+initContainers:
+  - name: wait-for-postgres
+    image: busybox:1.28
+    command: ['sh', '-c', 'until nc -zv postgres.vkpaints-prod-ns.svc.cluster.local 5432; do echo waiting for postgres; sleep 2; done;']
+  - name: wait-for-rabbitmq
+    image: busybox:1.28
+    command: ['sh', '-c', 'until nc -zv rabbitmq.vkpaints-prod-ns.svc.cluster.local 5672; do echo waiting for rabbitmq; sleep 2; done;']
