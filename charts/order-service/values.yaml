@@ -59,7 +59,7 @@ startupProbe:
   enabled: true
   httpGet:
     path: /health
-    port: 80
+    port: 3004
   failureThreshold: 30
   periodSeconds: 10
 initContainers: []
