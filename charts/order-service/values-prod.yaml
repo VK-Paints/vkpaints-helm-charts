@@ -1,28 +1,25 @@
 image:
   repository: ghcr.io/vk-paints/vkpaints-order-service
-  tag: v1.1.0
+  tag: v1.0.0
 replicas: 2
 env:
   NODE_ENV: "production"
 httproute:
   namespace: vkpaints-prod-ns
   hostname: vkcolors.shop
-
 db:
   url: "postgres://postgres:postgres@postgres.vkpaints-prod-ns.svc.cluster.local:5432/order_db"
 rabbitmq:
   url: "amqp://guest:guest@rabbitmq.vkpaints-prod-ns.svc.cluster.local:5672"
-
 affinity:
   podAntiAffinity:
     preferredDuringSchedulingIgnoredDuringExecution:
-    - weight: 100
-      podAffinityTerm:
-        labelSelector:
-          matchLabels:
-            app: order-service
-        topologyKey: "kubernetes.io/hostname"
-
+      - weight: 100
+        podAffinityTerm:
+          labelSelector:
+            matchLabels:
+              app: order-service
+          topologyKey: "kubernetes.io/hostname"
 resources:
   limits:
     cpu: 500m
@@ -30,7 +27,6 @@ resources:
   requests:
     cpu: 100m
     memory: 128Mi
-
 livenessProbe:
   enabled: true
   httpGet:
@@ -38,7 +34,6 @@ livenessProbe:
     port: 3004
   initialDelaySeconds: 15
   periodSeconds: 20
-
 readinessProbe:
   enabled: true
   httpGet:
@@ -46,7 +41,6 @@ readinessProbe:
     port: 3004
   initialDelaySeconds: 5
   periodSeconds: 10
-
 startupProbe:
   enabled: true
   httpGet:
