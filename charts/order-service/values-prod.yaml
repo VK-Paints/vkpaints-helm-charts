@@ -8,6 +8,11 @@ httproute:
   namespace: vkpaints-prod-ns
   hostname: vkcolors.shop
 
+db:
+  url: "postgres://postgres:postgres@postgres.vkpaints-prod-ns.svc.cluster.local:5432/order_db"
+rabbitmq:
+  url: "amqp://guest:guest@rabbitmq.vkpaints-prod-ns.svc.cluster.local:5672"
+
 affinity:
   podAntiAffinity:
     preferredDuringSchedulingIgnoredDuringExecution:

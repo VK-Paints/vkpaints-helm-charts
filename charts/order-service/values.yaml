@@ -12,6 +12,11 @@ httproute:
   gatewayNamespace: vkpaints-gateway-ns
   path: /api/orders
 
+db:
+  url: "postgres://postgres:postgres@postgres:5432/order_db"
+rabbitmq:
+  url: "amqp://guest:guest@rabbitmq:5672"
+
 affinity:
   podAntiAffinity:
     preferredDuringSchedulingIgnoredDuringExecution:

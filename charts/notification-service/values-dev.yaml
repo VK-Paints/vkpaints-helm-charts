@@ -2,7 +2,7 @@ image:
   repository: ghcr.io/vk-paints/vkpaints-notification-service
   tag: latest
 rabbitmq:
-  url: "amqp://guest:guest@rabbitmq:5672"
+  url: "amqp://guest:guest@rabbitmq.vkpaints-dev-ns.svc.cluster.local:5672"
 replicas: 2
 env:
   NODE_ENV: "development"

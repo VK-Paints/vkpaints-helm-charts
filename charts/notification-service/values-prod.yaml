@@ -12,6 +12,9 @@ httproute:
   hostname: vkcolors.shop
   path: /api/notifications
 
+rabbitmq:
+  url: "amqp://guest:guest@rabbitmq.vkpaints-prod-ns.svc.cluster.local:5672"
+
 affinity:
   podAntiAffinity:
     preferredDuringSchedulingIgnoredDuringExecution:
