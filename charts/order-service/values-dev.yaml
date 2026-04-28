@@ -52,10 +52,4 @@ startupProbe:
   failureThreshold: 30
   periodSeconds: 10
 
-initContainers:
-  - name: wait-for-postgres
-    image: busybox:1.28
-    command: ['sh', '-c', 'until nc -zv postgres.vkpaints-dev-ns.svc.cluster.local 5432; do echo waiting for postgres; sleep 2; done;']
-  - name: wait-for-rabbitmq
-    image: busybox:1.28
-    command: ['sh', '-c', 'until nc -zv rabbitmq.vkpaints-dev-ns.svc.cluster.local 5672; do echo waiting for rabbitmq; sleep 2; done;']
+initContainers: []
