@@ -24,9 +24,18 @@ resources:
     memory: 128Mi
 livenessProbe:
   enabled: true
+  httpGet:
+    path: /health
+    port: 3000
+  initialDelaySeconds: 15
+  periodSeconds: 20
 readinessProbe:
   enabled: true
-
+  httpGet:
+    path: /health
+    port: 3000
+  initialDelaySeconds: 5
+  periodSeconds: 10
 
 startupProbe:
   enabled: true
