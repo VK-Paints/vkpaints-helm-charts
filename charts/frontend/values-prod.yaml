@@ -1,5 +1,5 @@
 image:
-  repository: ghcr.io/vk-paints/vkpaints-frontend
+  repository: ghcr.io/vk-paints/vkpaints-frontend-service
   tag: v1.1.0
 replicas: 2
 env:
