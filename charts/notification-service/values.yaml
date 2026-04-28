@@ -7,6 +7,11 @@ service:
   port: 80
   targetPort: 3000
 
+httproute:
+  gatewayName: vk-paints-gateway
+  gatewayNamespace: vkpaints-gateway-ns
+  path: /api/notifications
+
 affinity:
   podAntiAffinity:
     preferredDuringSchedulingIgnoredDuringExecution:

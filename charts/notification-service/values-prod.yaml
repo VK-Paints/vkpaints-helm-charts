@@ -5,6 +5,13 @@ replicas: 2
 env:
   NODE_ENV: "production"
 
+httproute:
+  namespace: vkpaints-prod-ns
+  gatewayName: vk-paints-gateway
+  gatewayNamespace: vkpaints-gateway-ns
+  hostname: vkcolors.shop
+  path: /api/notifications
+
 affinity:
   podAntiAffinity:
     preferredDuringSchedulingIgnoredDuringExecution:
