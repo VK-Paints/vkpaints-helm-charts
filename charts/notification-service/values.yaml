@@ -5,7 +5,7 @@ image:
 replicas: 2
 service:
   port: 80
-  targetPort: 3000
+  targetPort: 8080
 
 httproute:
   gatewayName: vk-paints-gateway
@@ -31,28 +31,28 @@ resources:
     memory: 512Mi
   requests:
     cpu: 100m
-    memory: 128Mi
+    memory: 256Mi
 
 livenessProbe:
   enabled: true
   httpGet:
-    path: /health
-    port: 3000
+    path: /actuator/health
+    port: 8080
   initialDelaySeconds: 60
   periodSeconds: 20
 readinessProbe:
   enabled: true
   httpGet:
-    path: /health
-    port: 3000
+    path: /actuator/health
+    port: 8080
   initialDelaySeconds: 30
   periodSeconds: 10
 
 startupProbe:
   enabled: true
   httpGet:
-    path: /health
-    port: 3000
+    path: /actuator/health
+    port: 8080
   failureThreshold: 30
   periodSeconds: 10
 initContainers: []

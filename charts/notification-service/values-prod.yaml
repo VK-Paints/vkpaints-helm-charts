@@ -26,35 +26,35 @@ affinity:
         topologyKey: "kubernetes.io/hostname"
 
 resources:
-  limits:
-    cpu: 500m
-    memory: 512Mi
   requests:
+    memory: "256Mi"
     cpu: 100m
-    memory: 128Mi
+  limits:
+    memory: "512Mi"
+    cpu: 500m
 
 livenessProbe:
   enabled: true
   httpGet:
-    path: /health
-    port: 3000
-  initialDelaySeconds: 15
+    path: /actuator/health
+    port: 8080
+  initialDelaySeconds: 30
   periodSeconds: 20
 
 readinessProbe:
   enabled: true
   httpGet:
-    path: /health
-    port: 3000
-  initialDelaySeconds: 5
+    path: /actuator/health
+    port: 8080
+  initialDelaySeconds: 20
   periodSeconds: 10
 
 
 startupProbe:
   enabled: true
   httpGet:
-    path: /health
-    port: 3000
+    path: /actuator/health
+    port: 8080
   failureThreshold: 30
   periodSeconds: 10
 initContainers: []

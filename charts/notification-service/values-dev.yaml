@@ -27,27 +27,27 @@ resources:
     memory: 512Mi
   requests:
     cpu: 100m
-    memory: 128Mi
+    memory: 256Mi
 livenessProbe:
   enabled: true
   httpGet:
-    path: /health
-    port: 3000
+    path: /actuator/health
+    port: 8080
   initialDelaySeconds: 15
   periodSeconds: 20
 readinessProbe:
   enabled: true
   httpGet:
-    path: /health
-    port: 3000
-  initialDelaySeconds: 5
+    path: /actuator/health
+    port: 8080
+  initialDelaySeconds: 20
   periodSeconds: 10
 
 startupProbe:
   enabled: true
   httpGet:
-    path: /health
-    port: 3000
+    path: /actuator/health
+    port: 8080
   failureThreshold: 30
   periodSeconds: 10
 
