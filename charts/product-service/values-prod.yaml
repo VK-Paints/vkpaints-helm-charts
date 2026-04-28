@@ -1,23 +1,21 @@
 image:
   repository: ghcr.io/vk-paints/vkpaints-product-service
-  tag: v1.1.0
+  tag: v1.0.0
 replicas: 2
 env:
   NODE_ENV: "production"
 httproute:
   namespace: vkpaints-prod-ns
   hostname: vkcolors.shop
-
 affinity:
   podAntiAffinity:
     preferredDuringSchedulingIgnoredDuringExecution:
-    - weight: 100
-      podAffinityTerm:
-        labelSelector:
-          matchLabels:
-            app: product-service
-        topologyKey: "kubernetes.io/hostname"
-
+      - weight: 100
+        podAffinityTerm:
+          labelSelector:
+            matchLabels:
+              app: product-service
+          topologyKey: "kubernetes.io/hostname"
 resources:
   limits:
     cpu: 500m
@@ -25,7 +23,6 @@ resources:
   requests:
     cpu: 100m
     memory: 128Mi
-
 livenessProbe:
   enabled: true
   httpGet:
@@ -33,7 +30,6 @@ livenessProbe:
     port: 3002
   initialDelaySeconds: 15
   periodSeconds: 20
-
 readinessProbe:
   enabled: true
   httpGet:
@@ -41,7 +37,6 @@ readinessProbe:
     port: 3002
   initialDelaySeconds: 5
   periodSeconds: 10
-
 startupProbe:
   enabled: true
   httpGet:

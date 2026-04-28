@@ -41,7 +41,6 @@ readinessProbe:
     port: 3002
   initialDelaySeconds: 5
   periodSeconds: 10
-
 startupProbe:
   enabled: true
   httpGet:
@@ -49,5 +48,4 @@ startupProbe:
     port: 3002
   failureThreshold: 30
   periodSeconds: 10
-
 initContainers: []
